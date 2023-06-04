@@ -1,5 +1,6 @@
 package br.com.forum.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 @Document(collection = "posts")
+@EqualsAndHashCode(of = {"id" , "dateCreated"})
 public class Post {
     @Id
     private String id;
@@ -26,10 +28,13 @@ public class Post {
     @NotBlank(message = "Content is required!")
     private String content;
 
+
     private LocalDate dateCreated =  LocalDate.now();
 
     @NotBlank(message = "Author is required!")
     private String authorId;
+
+    private String authorName;
 
     @NotBlank(message = "Topic is required!")
     private String topic;

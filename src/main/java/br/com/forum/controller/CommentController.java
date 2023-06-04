@@ -14,8 +14,7 @@ import java.util.List;
 import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
-@RequestMapping("/api/comment")
-@CrossOrigin(origins = "*", maxAge = 3600)
+@RequestMapping("/api/comments")
 public class CommentController {
 
     @Autowired

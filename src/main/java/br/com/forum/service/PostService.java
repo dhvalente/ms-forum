@@ -12,6 +12,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
+
 @Slf4j
 @Service
 public class PostService {
@@ -21,12 +23,17 @@ public class PostService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    UserService userService;
     public Post createPost (PostDTO postDTO){
+        User user = userService.findById(postDTO.getAuthorId());
         Post post = Post.builder()
                 .content(postDTO.getContent())
                 .title(postDTO.getTitle())
                 .topic(postDTO.getTopic())
                 .authorId(postDTO.getAuthorId())
+                .authorName(user.getName())
                 .build();
        return postRepository.save(post);
     }

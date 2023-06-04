@@ -17,8 +17,7 @@ import java.util.List;
 import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
-@RequestMapping("/api/post")
-@CrossOrigin(origins = "*", maxAge = 3600)
+@RequestMapping("/api/posts")
 public class PostController {
 
     @Autowired
